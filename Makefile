@@ -10,7 +10,7 @@ include $(TOPDIR)/rules.mk
 
 PKG_NAME:=adguardhome
 PROJECT_NAME:=AdGuardHome
-PKG_VERSION:=v0.99.2
+PKG_VERSION:=latest
 PKG_RELEASE:=1
 
 include $(INCLUDE_DIR)/package.mk
@@ -57,14 +57,9 @@ ifeq ($(ARCH),aarch64)
 	PKG_ARCH_ADGUARDHOME:=arm64
 endif
 
-TAR_NAME:=AdGuardHome_linux_$(PKG_ARCH_ADGUARDHOME)
-
-PKG_SOURCE:=$(TAR_NAME).tar.gz
-
-PKG_SOURCE_URL:=https://github.com/AdguardTeam/AdGuardHome/releases/download/$(PKG_VERSION)/
-
-UNTAR_DIR:=$(BUILD_DIR)/$(PKG_NAME)-$(PKG_VERSION)/$(PKG_NAME)-extract/$(PKG_ARCH_ADGUARDHOME)
-
+PKG_SOURCE:=AdGuardHome_linux_$(PKG_ARCH_ADGUARDHOME).tar.gz
+PKG_SOURCE_URL:=https://static.adguard.com/adguardhome/beta/
+PKG_BUILD_DIR:=$(BUILD_DIR)/AdGuardHome_linux_$(PKG_ARCH_ADGUARDHOME)
 PKG_HASH:=skip
 
 define Build/Prepare
